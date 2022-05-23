@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/MatchMaking.unity
+    guid: 972e1be6c0ed44435a2e499d07004c83
+  - enabled: 1
+    path: Assets/_Scenes/DeathMatch_For_5.unity
+    guid: 2f3f6e81a7b86f743b6559aae50069ff
+  m_configObjects: {}

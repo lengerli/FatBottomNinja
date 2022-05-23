@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - RedHealthBar
+  - BlueHealthBar
+  - RedScoreImages
+  - BlueScoreImages
+  - GameOverBlue
+  - GameOverRed
+  - CanvasForName
+  - GameManager
+  - ColorTracker
+  - CanvasForNinjaColors
+  - NinjaRadar
+  - Katana
+  - NinjaHitBox
+  - DummyTag
+  - JellyDummy
+  - NewNinjaRadar
+  - NinjaStar
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - RopeNotHitLayer
+  - BulletLayer
+  - MiniMapCameraLayer
+  - MainCameraLayer
+  - BackGroundLayer
+  - OponentCameraLayer
+  - InvisibleToAllLayer
+  - NinjaLayer
+  - RopeBendLayer
+  - NoCollisionLayer
+  - JellyLayer
+  - JellyStopLayer
+  - NinjaHitDetectionLayer
+  - ObstaclesLayer
+  - NoCollisionLayer
+  - CrossHairLayer
+  - Restart Display Objects
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: NinjaLayer
+    uniqueID: 2644199461
+    locked: 0
+  - name: BackgroundLayer
+    uniqueID: 743627893
+    locked: 0
