@@ -1,5 +1,5 @@
 # FatBottomNinja
-Rep for Web GL version of Fat Bottom Ninja game
+Rep for Web GL version of Fat Bottom Ninja.
 
 Fat Bottom Ninja is a 2D multiplayer shooter game inspired by Liero. 
 
