@@ -8,10 +8,7 @@ public class CrossHairMovement : MonoBehaviour
     [SerializeField]
     GameObject crossHair;
 
-    [SerializeField]
-    GameObject localThreePointCrosshair_MidPointObject;
-
-    public float currentCrosshairAngle = 0;
+    private float currentCrosshairAngle = 0;
 
     PhotonView photonView;
 
@@ -19,21 +16,14 @@ public class CrossHairMovement : MonoBehaviour
 
     public float deltaMouseAugmentationCoeff;
 
-    [SerializeField]
-    private int lastSynchedCrosshairAngle = 0;
-
-    [SerializeField]
-    private float crossHairSynchPeriod; //in seconds
-
-    private float timeSinceLastCrossHairSynch = 0;
-
-    [SerializeField]
-    private int currentCrosshairAngleForNetworkUse;
+    public INinjaInputInterface inputInterface;
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
+
+        inputInterface = transform.parent.GetComponent<INinjaInputInterface>();
 
         photonView = GetComponent<PhotonView>();
 
@@ -41,7 +31,6 @@ public class CrossHairMovement : MonoBehaviour
             crossHair.GetComponent<SpriteRenderer>().enabled = false;
 
         isLocalNinja = photonView.IsMine;
-
     }
 
     // Update is called once per frame
@@ -56,9 +45,9 @@ public class CrossHairMovement : MonoBehaviour
         if (Cursor.visible == false && Cursor.lockState == CursorLockMode.Locked)
             Cursor.lockState = CursorLockMode.None;
 
-        crossHair.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        crossHair.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(inputInterface.MousePosition);
 
-        int newAngle = (int) CalculateAngleFromMousePosition(Input.mousePosition);
+        int newAngle = (int) CalculateAngleFromMousePosition(inputInterface.MousePosition);
 
 
         MoveTheCrosshair(newAngle);

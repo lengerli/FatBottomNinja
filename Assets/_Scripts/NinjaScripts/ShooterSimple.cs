@@ -30,6 +30,7 @@ public class ShooterSimple : MonoBehaviour {
     public float[] reloadTimeIntervals;
     public int[] shotsLeft;
 
+    private INinjaInputInterface input;
 
     PhotonView photonView;
 
@@ -38,7 +39,7 @@ public class ShooterSimple : MonoBehaviour {
     private void Start()
     {
         photonView = GetComponent<PhotonView>();
-
+        input = transform.parent.GetComponent<INinjaInputInterface>();
         weaponTitlesDisplayed = Instantiate(weaponTitles);
         weaponStatusBarsDisplayed = Instantiate(weaponStatusBars);
         weaponTitlesDisplayed.transform.GetChild(0).gameObject.SetActive(true);
@@ -81,15 +82,14 @@ public class ShooterSimple : MonoBehaviour {
 
     void Update() 
     {
-        if (CanShootWeapon(currentWeapon) && photonView.IsMine && (Input.GetMouseButtonDown(0)))
+        if (CanShootWeapon(currentWeapon) && photonView.IsMine && (input.GetMouseButtonDown(0)))
         {
             currentWeapon = 1;
             DecreaseShootTimesForWeapon(currentWeapon, Time.deltaTime);
             ShootABulletLocal(currentWeapon);
             photonView.RPC("ShootABulletNetwork", RpcTarget.Others, currentWeapon, (int) transform.rotation.eulerAngles.z);//Calls the remote event in all connected clients and self, the event will call the ShootABullet method as per remoteEventManager component attached to NinjaCharacter           
-
         }
-        else if (CanShootWeapon(currentWeapon) && photonView.IsMine && (Input.GetKeyDown(KeyCode.Space)))
+        else if (CanShootWeapon(currentWeapon) && photonView.IsMine && (input.GetKeyDown(KeyCode.Space)))
         {
             currentWeapon = 0;
             DecreaseShootTimesForWeapon(currentWeapon, Time.deltaTime);

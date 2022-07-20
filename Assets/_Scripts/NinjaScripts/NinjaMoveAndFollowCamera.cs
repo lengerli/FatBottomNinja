@@ -56,9 +56,11 @@ public class NinjaMoveAndFollowCamera : MonoBehaviour {
     public AudioSource hopAudio;
     public AudioSource jumpAudio;
 
-
+    private INinjaInputInterface inputComponent;
     void Start()    
     {
+        inputComponent = GetComponent<INinjaInputInterface>();
+
         ninjaRigidBody = GetComponent<Rigidbody2D>();
 
         ropeShootControls = GetComponent<RopeShootControls>();
@@ -86,7 +88,7 @@ public class NinjaMoveAndFollowCamera : MonoBehaviour {
 
     void CheckPlayerInputForMove()
     {
-        if (Input.GetKeyUp(KeyCode.Tab) && assIsTouchingGround && !isNinjaOnVerticalJump)
+        if (inputComponent.GetKeyUp(KeyCode.Tab) && assIsTouchingGround && !isNinjaOnVerticalJump)
             JumpTheNinja();
         else 
         {
@@ -94,15 +96,16 @@ public class NinjaMoveAndFollowCamera : MonoBehaviour {
 
             #region *** KeyBoard Movement Inputs ***
 
-            if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
+            if (inputComponent.GetKeyDown(KeyCode.D) || inputComponent.GetKey(KeyCode.D))
             {
                 canMoveRight = true;
                 noInputTimeCounter = 0;
                 isThereInput = true;
             }
+
             else 
                 canMoveRight = false;
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))
+            if (inputComponent.GetKeyDown(KeyCode.A) || inputComponent.GetKey(KeyCode.A))
             {
                 canMoveLeft = true;
                 noInputTimeCounter = 0;
@@ -110,7 +113,7 @@ public class NinjaMoveAndFollowCamera : MonoBehaviour {
             }
             else 
                 canMoveLeft = false;
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.S))
+            if (inputComponent.GetKeyDown(KeyCode.S) || inputComponent.GetKey(KeyCode.S))
             {
                 canMoveDown = true;
                 noInputTimeCounter = 0;
@@ -118,7 +121,7 @@ public class NinjaMoveAndFollowCamera : MonoBehaviour {
             }
             else 
                 canMoveDown = false;
-            if ((Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.W)) && !assIsTouchingGround && ropeShootControls.isRopeAnchored)
+            if ((inputComponent.GetKeyDown(KeyCode.W) || inputComponent.GetKey(KeyCode.W)) && !assIsTouchingGround && ropeShootControls.isRopeAnchored)
             {
                 canMoveUp = true;
                 noInputTimeCounter = 0;

@@ -42,6 +42,8 @@ public class KatanaSlicer : MonoBehaviour
 
     public AudioSource katanaWindShoutAudio;
 
+    private INinjaInputInterface input;
+
     public bool IsKatanaSheathed
     {
         get{ return isKatanaSheathed; }
@@ -55,6 +57,7 @@ public class KatanaSlicer : MonoBehaviour
     private void Start()
     {
         ResetKatana();
+        input = transform.GetComponent<INinjaInputInterface>();
     }
 
     //When the katana object is activated, start drawing the sword
@@ -75,8 +78,6 @@ public class KatanaSlicer : MonoBehaviour
     {
         ResetKatana();
     }
-
-
 
     IEnumerator DrawTheKatana()
     {
@@ -205,9 +206,7 @@ public class KatanaSlicer : MonoBehaviour
                 trails.Play(true);
 
             GetComponent<Rigidbody2D>().angularVelocity = katanaAngularSwipeSpeed;
-
     }
-
 
     IEnumerator SheatheTheKatana()//Reset the katana and deactivate it for sheathing
     {
@@ -248,7 +247,7 @@ public class KatanaSlicer : MonoBehaviour
         if(canKatanaSwipe == true)
           CheckNinjaDirection();
 
-        if (Input.GetMouseButton(0) == false && canKatanaSwipe && GetComponent<PhotonView>().IsMine)
+        if (input.GetMouseButton(0) == false && canKatanaSwipe && GetComponent<PhotonView>().IsMine)
             GetComponent<PhotonView>().RPC("SwipeTheKatanaNetwork", RpcTarget.All);
 
         transform.position = transform.parent.position;

@@ -133,12 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossHair: {fileID: 1750931217941560636}
-  localThreePointCrosshair_MidPointObject: {fileID: 844469553002607218}
-  currentCrosshairAngle: 0
   deltaMouseAugmentationCoeff: 2
-  lastSynchedCrosshairAngle: 0
-  crossHairSynchPeriod: 0.15
-  currentCrosshairAngleForNetworkUse: 0
 --- !u!114 &6840918664507375368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +174,7 @@ GameObject:
   - component: {fileID: 5000636445706321310}
   - component: {fileID: 1061458500498672072}
   - component: {fileID: 6724176780939579886}
+  - component: {fileID: 7239426183791115345}
   m_Layer: 15
   m_Name: NinjaCharacter XXL
   m_TagString: Player
@@ -587,6 +583,18 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 30
+--- !u!114 &7239426183791115345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670258635180782693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd772f6b488b2a44cab2a0fbfc452254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &710271380092639723
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class RopeShootControls : MonoBehaviour {
 
 
 	public GameObject theNinja;
+    private INinjaInputInterface inputInterface;
 	public bool isRopeShot;
 	public Vector2 ropeEndPoint;
 	private bool isRopeRayHitAnything;
@@ -23,16 +24,17 @@ public class RopeShootControls : MonoBehaviour {
 
     void Start()
     {
-        photonView = GetComponent<PhotonView>();            
+        photonView = GetComponent<PhotonView>();
+        inputInterface = GetComponent<INinjaInputInterface>();
         ReleaseRopeNetwork();//Release the rope at the start to remove anchor from scene properly
     }
 
     void Update()
     {
         /** MOUSE CONTROLS FOR ROPE SHOOT AND RELEASE **/
-        if (photonView.IsMine && !disableShooting && Input.GetMouseButtonUp(1)) 
+        if (photonView.IsMine && !disableShooting && inputInterface.GetMouseButtonUp(1)) 
         {
-            Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 targetPos = Camera.main.ScreenToWorldPoint(inputInterface.MousePosition);
             RopeShootOrRelease(targetPos);
             StartCoroutine(DisableTouchFor5Frames());
         }

@@ -29,7 +29,7 @@ public class GetOutOfStuckInObstacle : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().RelocateThisNinja(gameObject);
             respawnKeyStrokeCounter = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.R) && Physics2D.OverlapCircleAll(transform.position, 0.05f).Length > 2)
+        else if (GetComponent<INinjaInputInterface>().GetKeyDown(KeyCode.R) && Physics2D.OverlapCircleAll(transform.position, 0.05f).Length > 2)
             respawnKeyStrokeCounter++;
 
     }
